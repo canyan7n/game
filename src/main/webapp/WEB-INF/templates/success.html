@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>成功</title>
+</head>
+<body>
+<h1>success.html</h1><br>
+<table>
+    <tr>
+        <td>用户信息</td>
+    </tr>
+    <tr>
+        <th>用户名</th>
+        <th>账户类型</th>
+        <th>最后一次登录时间</th>
+        <th>登录状态</th>
+    </tr>
+    <tr>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.accountType}"></td>
+        <td th:text="${user.lastLogin}"></td>
+        <td th:text="${user.islogin}"></td>
+<!--        <td th:href="${user.}"></td>-->
+    </tr>
+</table><br>
+<a th:href="@{/toplay}">玩游戏</a><br>
+<a th:href="@{/logout}">退出</a>
+</body>
+</html>

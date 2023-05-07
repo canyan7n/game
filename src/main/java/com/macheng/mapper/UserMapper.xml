@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macheng.mapper.UserMapper">
+    <!--
+        mapper接口和映射文件要保证两个一致
+        1.mapper接口的全类名和映射文件的namespace的id值保持一致
+        2.mapper接口中的方法的方法名要和映射文件的sql的id值保持一致
+    -->
+
+    <!--public Integer register(@Param("user") User user);-->
+    <insert id="register">
+        insert into t_user values(#{user.userId},#{user.username},#{user.password},#{user.accountType},#{user.lastLogin},0)
+    </insert>
+    <!--    public User getUserByUP();-->
+    <select id="getUserByUP" resultType="User">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+
+<!--    public Integer loginChange(@Param("userId") Integer userId);-->
+    <update id="loginChange">
+        update  t_user set islogin = 1 where user_id = #{userId}
+    </update>
+    <!--    public Integer logoutChange();-->
+    <update id="logoutChange">
+        update  t_user set islogin = 0 and last_login = #{lastLogin} where user_id = #{userId}
+    </update>
+</mapper>
