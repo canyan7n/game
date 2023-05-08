@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-     UserDao userDao;
+    protected UserDao userDao;
     @Autowired
     private JdbcTemplate jdbcTemplate;
     /**
