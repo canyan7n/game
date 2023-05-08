@@ -45,10 +45,8 @@ public class UserServiceImpl implements UserService {
      * 玩游戏
      */
     @Override
-    public void play() {
-
-
-        userDao.play();
+    public void play(User user) {
+        userDao.play(user);
     }
 
     /**

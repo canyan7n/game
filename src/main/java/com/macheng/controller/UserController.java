@@ -73,7 +73,7 @@ public class UserController {
             return "fail";
         }
         model.addAttribute("user",user);
-        userService.play();
+        userService.play(user);
         return "play";
     }
 

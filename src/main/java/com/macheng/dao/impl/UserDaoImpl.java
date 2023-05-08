@@ -28,6 +28,8 @@ public class UserDaoImpl implements UserDao {
 
     @Autowired
     UserMapper userMapper;
+
+
     @Override
     public Integer register(User user) {
         //获取当前时间
@@ -57,7 +59,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void play() {
+    public void play(User user) {
 
     }
 

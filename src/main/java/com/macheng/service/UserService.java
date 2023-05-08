@@ -21,7 +21,7 @@ public interface UserService {
     /**
      * 登录以后玩游戏
      */
-    public void play();
+    public void play(User user);
 
     /**
      * 玩游戏以后，可以退出

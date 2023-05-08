@@ -57,15 +57,15 @@
     </bean>
     <!--    玩家-->
     <bean id="playerOne" class="com.macheng.pojo.Player">
-        <property name="weapon" ref="mu"></property>
+        <property name="weapons" ref="mu"></property>
         <property name="playName" value="角色1"></property>
     </bean>
     <bean id="playerTwo" class="com.macheng.pojo.Player">
-        <property name="weapon" ref="tie"></property>
+        <property name="weapons" ref="tie"></property>
         <property name="playName" value="角色2"></property>
     </bean>
     <bean id="playerThr" class="com.macheng.pojo.Player">
-        <property name="weapon" ref="mo"></property>
+        <property name="weapons" ref="mo"></property>
         <property name="playName" value="角色3"></property>
     </bean>
     <!--    怪物-->

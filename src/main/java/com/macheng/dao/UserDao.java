@@ -8,7 +8,7 @@ public interface UserDao {
 
     public User login(String username, String password);
 
-    public void play();
+    public void play(User user);
 
     public void logout(Integer userId);
 }
