@@ -1,6 +1,7 @@
 package com.macheng.dao.impl;
 
 import com.macheng.dao.UserDao;
+import com.macheng.mapper.PlayerMapper;
 import com.macheng.mapper.UserMapper;
 import com.macheng.pojo.Monster;
 import com.macheng.pojo.Player;
@@ -29,7 +30,8 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     UserMapper userMapper;
 
-
+    @Autowired
+    PlayerMapper playerMapper;
     @Override
     public Integer register(User user) {
         //获取当前时间
@@ -60,6 +62,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void play(User user) {
+
 
     }
 
