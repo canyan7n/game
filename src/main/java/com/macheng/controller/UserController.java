@@ -29,14 +29,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //注册
     @RequestMapping("/register")
     public String register(){
         return "register";
     }
 
+    //注册页面
     @RequestMapping("/userregister")
     public String userRegister(User user){
-        System.out.println(user);
         int row = userService.register(user);
         if(row > 0){
             return "index";
@@ -46,25 +47,31 @@ public class UserController {
 
     @RequestMapping("/login")
     public String login(HttpServletRequest request, HttpSession session, Model model) {
+        //获取提交的账号和密码
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         user = userService.login(username,password);
+        System.out.println(user);
         // session.setAttribute("user",user);
+        //将查询出的用户信息添加带请求域中
         model.addAttribute("user",user);
+        //判断是否存在这个用户
         if ( user != null){
+            //修改这个用户的登录状态
             user.setIslogin(true);
+            //将这个用户放入session域
+            UserSession.setUserSession(user);
             return "success";
-//            userService.play();
         }
         return "error";
     }
 
     @RequestMapping("/toplay")
     public String play(Model model){
+        //如果用户未登录则不能玩游戏
         if(!user.getIslogin()){
             return "fail";
         }
-        UserSession.setUserSession(user);
         model.addAttribute("user",user);
         userService.play();
         return "play";
@@ -72,9 +79,9 @@ public class UserController {
 
     @RequestMapping("/logout")
     public String logout(){
+        //用户登出，修改相应状态
         userService.logout(user.getUserId());
         user.setIslogin(false);
         return "logout";
     }
-    
 }
