@@ -6,17 +6,13 @@
 </head>
 <body>
 <h1>玩游戏</h1>
-<form action="" method="">
-    <label>角色选择</label><br>
-    角色1:<input type="radio" name="player"/>
-    角色2:<input type="radio" name="player"/>
-    角色3:<input type="radio" name="player"/>
-    <br>
-    <label>武器选择</label><br>
-    木剑:<input type="radio" name="weapon"/>
-    铁剑:<input type="radio" name="weapon"/>
-    魔剑:<input type="radio" name="weapon"/><br>
-    <input type="submit" value="提交"/>
+<form th:action="">
+    <input type="text" list="weaponList">
+    <datalist id="list">
+        <option>木剑</option>
+        <option>铁剑</option>
+        <option>魔剑</option>
+    </datalist>
 </form>
 </body>
 </html>
