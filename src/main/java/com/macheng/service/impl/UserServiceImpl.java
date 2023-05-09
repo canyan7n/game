@@ -1,11 +1,14 @@
 package com.macheng.service.impl;
 
 import com.macheng.dao.UserDao;
+import com.macheng.pojo.Player;
 import com.macheng.pojo.User;
 import com.macheng.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author ：macheng
@@ -56,5 +59,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void logout(Integer userId) {
         userDao.logout(userId);
+    }
+
+    @Override
+    public List<Player> getUserPlayers(Integer userId) {
+        List<Player> userPlayers = userDao.getUserPlayers(userId);
+        return userPlayers;
     }
 }

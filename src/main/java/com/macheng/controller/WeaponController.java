@@ -1,10 +1,14 @@
 package com.macheng.controller;
 
 import com.macheng.pojo.Weapon;
+import com.macheng.service.WeaponService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.crypto.interfaces.PBEKey;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author ：macheng
@@ -15,29 +19,35 @@ import javax.crypto.interfaces.PBEKey;
  */
 @Controller
 public class WeaponController {
-    @RequestMapping("/addweapon")
+
+    @Autowired
+    WeaponService weaponService;
+    @RequestMapping("/addWeapon")
     public String addWeapon(Weapon weapon){
         return null;
     }
 
-    @RequestMapping("/deleteweapon")
+    @RequestMapping("/deleteWeapon")
     public String deleteWeapon(String weaponName){
         return null;
     }
 
-    @RequestMapping("/updateweapon")
+    @RequestMapping("/updateWeapon")
     public String updateWeapon(String weaponName){
         return null;
     }
 
-    @RequestMapping("/getweapon")
+    @RequestMapping("/getWeapon")
     public String getWeapon(String weaponName){
         return null;
     }
 
-    @RequestMapping("/getweapons")
-    public String getWeapons(){
-        return null;
+    @RequestMapping("/getWeapons")
+    public String getWeapons(HttpServletRequest request){
+        List<Weapon> allWeapon = weaponService.getWeapons();
+        System.out.println("=====" + allWeapon);
+        request.setAttribute("allWeapon",allWeapon);
+        return "weapon-list";
     }
 }
 

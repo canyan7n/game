@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>我的角色</title>
+</head>
+<body>
+<div id="user_player">
+    <table>
+        <tr>
+            <th colspan="2">user_player_list</th>
+        </tr>
+        <tr>
+            <th>角色</th>
+            <th>(<a th:href="@{/addPlayer}">添加</a>)</th>
+        </tr>
+        <tr th:each="players:${userPlayers}">
+            <td th:text="${players.playerName}"></td>
+            <td>
+                <a th:href="www.baidu.com">修改</a>
+                <a th:href="www.baidu.com">删除</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

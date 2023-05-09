@@ -1,8 +1,11 @@
 package com.macheng.mapper;
 
+import com.macheng.pojo.Player;
 import com.macheng.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 public interface UserMapper {
@@ -28,4 +31,11 @@ public interface UserMapper {
      * @return
      */
     Integer logoutChange(@Param("userId") Integer userId, @Param("lastLogin") String lastLogin);
+
+    /**
+     * 根据用户获取用户的所有游戏角色
+     * @param userId
+     * @return
+     */
+    List<Player> getUserPlayers(@Param("userId") Integer userId);
 }

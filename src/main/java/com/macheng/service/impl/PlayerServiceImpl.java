@@ -42,6 +42,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public List<Player> getAllPlayer() {
-        return null;
+        List<Player> allPlayer = playerDao.getAllPlayer();
+        return allPlayer;
     }
 }

@@ -42,6 +42,8 @@ public class WeaponServiceImpl implements WeaponService {
 
     @Override
     public List<Weapon> getWeapons() {
-        return null;
+
+        List<Weapon> allWeapon = weaponDao.getWeapons();
+        return allWeapon;
     }
 }

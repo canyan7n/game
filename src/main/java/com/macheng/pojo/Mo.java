@@ -1,5 +1,8 @@
 package com.macheng.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,40 +12,13 @@ import org.springframework.stereotype.Component;
  */
 
 @Component("mo")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Mo implements Weapon {
-
-    //魔剑的伤害
-//    @Value("100")
     private Integer weaponDamage;//武器伤害值
 
-//    @Value("魔剑")
     private String weaponName;//武器名字
-
-    public Mo() {
-    }
-
-    public Mo(Integer damage, String weaponName) {
-        this.weaponDamage = damage;
-        this.weaponName = weaponName;
-    }
-
-    public Integer getWeaponDamage() {
-        return weaponDamage;
-    }
-
-    public void setWeaponDamage(Integer weaponDamage) {
-        this.weaponDamage = weaponDamage;
-    }
-
-    public String getWeaponName() {
-        return weaponName;
-    }
-
-    public void setWeaponName(String weaponName) {
-        this.weaponName = weaponName;
-    }
-
-
 
     @Override
     public Integer hurt() {

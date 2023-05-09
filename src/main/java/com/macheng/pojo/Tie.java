@@ -1,5 +1,8 @@
 package com.macheng.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,49 +12,16 @@ import org.springframework.stereotype.Component;
  */
 
 @Component("tie")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Tie implements Weapon {
-
-    //铁剑的伤害
-//    @Value("50")
-    private Integer damage; //铁剑的伤害值
+    private Integer weaponDamage; //铁剑的伤害值
 
 //    @Value("铁剑")
-    private String name; //武器名字
-
-    public Tie() {
-    }
-
-    public Tie(Integer damage, String name) {
-        this.damage = damage;
-        this.name = name;
-    }
-
+    private String weaponName; //武器名字
     @Override
     public Integer hurt() {
-        return damage;
-    }
-
-    @Override
-    public String toString() {
-        return "Tie{" +
-                "damage=" + damage +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
-    public Integer getDamage() {
-        return damage;
-    }
-
-    public void setDamage(Integer damage) {
-        this.damage = damage;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        return weaponDamage;
     }
 }

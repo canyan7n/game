@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author ：macheng
@@ -72,5 +73,11 @@ public class UserDaoImpl implements UserDao {
         String lastLogin = TimeUtil.getCurrentTime();
         // 修改退出的用户的状态
         userMapper.logoutChange(userId, lastLogin);
+    }
+
+    @Override
+    public List<Player> getUserPlayers(Integer userId) {
+        List<Player> userPlayers = userMapper.getUserPlayers(userId);
+        return userPlayers;
     }
 }

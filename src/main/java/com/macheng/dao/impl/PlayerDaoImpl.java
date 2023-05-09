@@ -1,7 +1,9 @@
 package com.macheng.dao.impl;
 
 import com.macheng.dao.PlayerDao;
+import com.macheng.mapper.PlayerMapper;
 import com.macheng.pojo.Player;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +17,9 @@ import java.util.List;
  */
 @Repository
 public class PlayerDaoImpl implements PlayerDao {
+
+    @Autowired
+    PlayerMapper playerMapper;
     @Override
     public Integer addPlayer(Player player) {
         return null;
@@ -37,6 +42,7 @@ public class PlayerDaoImpl implements PlayerDao {
 
     @Override
     public List<Player> getAllPlayer() {
-        return null;
+        List<Player> allPlayer = playerMapper.getAllPlayer();
+        return allPlayer;
     }
 }

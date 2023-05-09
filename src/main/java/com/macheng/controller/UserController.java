@@ -1,5 +1,6 @@
 package com.macheng.controller;
 
+import com.macheng.pojo.Player;
 import com.macheng.pojo.User;
 import com.macheng.service.UserService;
 import com.macheng.utils.UserSession;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,6 +47,7 @@ public class UserController {
         return "error";
     }
 
+    // 登录
     @RequestMapping("/login")
     public String login(HttpServletRequest request, HttpSession session, Model model) {
         //获取提交的账号和密码
@@ -66,6 +69,7 @@ public class UserController {
         return "error";
     }
 
+    // 玩游戏
     @RequestMapping("/toplay")
     public String play(Model model){
         //如果用户未登录则不能玩游戏
@@ -77,11 +81,20 @@ public class UserController {
         return "play";
     }
 
+    //登出
     @RequestMapping("/logout")
     public String logout(){
         //用户登出，修改相应状态
         userService.logout(user.getUserId());
         user.setIslogin(false);
         return "logout";
+    }
+
+    // 查看当前用户的游戏角色
+    @RequestMapping("/getUserPlayers")
+    public String getPlayers(HttpServletRequest request){
+        List<Player> userPlayers = userService.getUserPlayers(user.getUserId());
+        request.setAttribute("userPlayers",userPlayers);
+        return "user-players";
     }
 }

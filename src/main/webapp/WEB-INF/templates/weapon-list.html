@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>武器列表</title>
+</head>
+<body>
+<div id="weapon">
+    <table>
+        <tr>
+            <th colspan="3">weapon_list</th>
+        </tr>
+        <tr>
+            <th>武器名字</th>
+            <th>武器伤害</th>
+            <th>(<a th:href="@{/addPlayer}">添加</a>)</th>
+        </tr>
+        <tr th:each="weapons:${allWeapon}">
+            <td th:text="${weapons.weaponName}"></td>
+            <td th:text="${weapons.weaponDamage}"></td>
+            <td>
+                <a th:href="www.baidu.com">修改</a>
+                <a th:href="www.baidu.com">删除</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

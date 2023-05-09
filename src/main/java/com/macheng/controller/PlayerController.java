@@ -1,9 +1,14 @@
 package com.macheng.controller;
 
+import com.macheng.pojo.Player;
 import com.macheng.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author ：macheng
@@ -40,7 +45,10 @@ public class PlayerController {
     }
 
     @RequestMapping("getPlayers")
-    public String getPlayers(){
-        return null;
+    public String getPlayers(HttpServletRequest request){
+        Collection<Player> allPlayer = playerService.getAllPlayer();
+        System.out.println("========" + allPlayer);
+        request.setAttribute("allPlayer",allPlayer);
+        return "/player-list";
     }
 }

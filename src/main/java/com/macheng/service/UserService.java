@@ -1,7 +1,10 @@
 package com.macheng.service;
 
+import com.macheng.pojo.Player;
 import com.macheng.pojo.User;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -27,4 +30,11 @@ public interface UserService {
      * 玩游戏以后，可以退出
      */
     public void logout(Integer userId);
+
+    /**
+     * 根据用户id获取用户的所有游戏角色
+     * @param userId
+     * @return
+     */
+    public List<Player> getUserPlayers(Integer userId);
 }

@@ -13,6 +13,7 @@
     <insert id="register">
         insert into t_user values(#{user.userId},#{user.username},#{user.password},#{user.accountType},#{user.lastLogin},0)
     </insert>
+
     <!--    public User getUserByUP();-->
     <select id="getUserByUP" resultType="User">
         select * from t_user where username = #{username} and password = #{password}
@@ -22,8 +23,17 @@
     <update id="loginChange">
         update  t_user set islogin = 1 where user_id = #{userId}
     </update>
+
     <!--    public Integer logoutChange();-->
     <update id="logoutChange">
         update  t_user set islogin = 0 and last_login = #{lastLogin} where user_id = #{userId}
     </update>
+
+    <!--List<Player> getUserPlayers(@Param("userId") Integer userId);-->
+    <select id="getUserPlayers" resultType="Player">
+        select player_name,t_player.player_id,t_player.user_id
+        from t_player
+        left join t_userdata
+        on t_player.user_id = #{userId} and t_userdata.user_id = #{userId}
+    </select>
 </mapper>
