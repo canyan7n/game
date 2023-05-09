@@ -22,17 +22,20 @@ public class PlayerDaoImpl implements PlayerDao {
     PlayerMapper playerMapper;
     @Override
     public Integer addPlayer(Player player) {
-        return null;
+        Integer row = playerMapper.addPlayer(player);
+        return row;
     }
 
     @Override
-    public Integer deletePlayer(String playerName) {
-        return null;
+    public Integer deletePlayer(Integer playerId) {
+        Integer row = playerMapper.DeletePlayer(playerId);
+        return row;
     }
 
     @Override
-    public Integer updatePlayer(String playerName) {
-        return null;
+    public Integer updatePlayer(Player player) {
+        Integer row = playerMapper.UpdatePlayer(player);
+        return row;
     }
 
     @Override

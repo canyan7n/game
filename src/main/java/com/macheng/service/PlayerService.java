@@ -16,18 +16,18 @@ public interface PlayerService {
     Integer addPlayer(Player player);
 
     /**
-     * 根据角色名删除角色
-     * @param playerName
+     * 根据角色id删除角色
+     * @param playerId
      * @return
      */
-    Integer deletePlayer(String playerName);
+    Integer deletePlayer(Integer playerId);
 
     /**
-     * 根据角色名修改角色
-     * @param playerName
+     * 修改角色
+     * @param player
      * @return
      */
-    Integer updatePlayer(String playerName);
+    Integer updatePlayer(Player player);
 
     /**
      * 根据角色名查询角色

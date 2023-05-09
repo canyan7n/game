@@ -34,7 +34,7 @@ public class UserController {
     //注册
     @RequestMapping("/register")
     public String register(){
-        return "register";
+        return "/user/register";
     }
 
     //注册页面
@@ -78,7 +78,7 @@ public class UserController {
         }
         model.addAttribute("user",user);
         userService.play(user);
-        return "play";
+        return "/user/play";
     }
 
     //登出
@@ -87,7 +87,7 @@ public class UserController {
         //用户登出，修改相应状态
         userService.logout(user.getUserId());
         user.setIslogin(false);
-        return "logout";
+        return "/user/logout";
     }
 
     // 查看当前用户的游戏角色
@@ -95,6 +95,6 @@ public class UserController {
     public String getPlayers(HttpServletRequest request){
         List<Player> userPlayers = userService.getUserPlayers(user.getUserId());
         request.setAttribute("userPlayers",userPlayers);
-        return "user-players";
+        return "/user/user-players";
     }
 }

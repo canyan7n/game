@@ -13,7 +13,7 @@
         <tr>
             <th>武器名字</th>
             <th>武器伤害</th>
-            <th>(<a th:href="@{/addPlayer}">添加</a>)</th>
+            <th>(<a th:href="@{/addWeaponPre}">添加</a>)</th>
         </tr>
         <tr th:each="weapons:${allWeapon}">
             <td th:text="${weapons.weaponName}"></td>

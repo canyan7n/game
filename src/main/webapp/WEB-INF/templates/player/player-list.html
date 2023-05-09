@@ -8,23 +8,23 @@
 <div id="player">
     <table>
         <tr>
-            <th colspan="5">player_list</th>
+            <th colspan="4">player_list</th>
         </tr>
         <tr>
             <th>角色ID</th>
             <th>名字</th>
             <th>用户ID</th>
-            <th>武器</th>
-            <th>(<a th:href="@{/addPlayer}">添加</a>)</th>
+<!--            <th>武器</th>-->
+            <th>(<a th:href="@{/addPlayerPre}">添加</a>)</th>
         </tr>
         <tr th:each="players:${allPlayer}">
             <td th:text="${players.playerId}"></td>
             <td th:text="${players.playerName}"></td>
             <td th:text="${players.userId}"></td>
-            <td th:text="${players.weapons}">(<a th:href="@{/getWeapons}">查看</a>)</td>
+<!--            <td th:text="${players.weapons}" th:default="无"></td>-->
             <td>
-                <a th:href="www.baidu.com">修改</a>
-                <a th:href="www.baidu.com">删除</a>
+                <a th:href="@{'/updatePlayerPre/'+${players.playerId}}">修改</a>
+                <a th:href="@{'/deletePlayer/'+${players.playerId}}">删除</a>
             </td>
         </tr>
     </table>

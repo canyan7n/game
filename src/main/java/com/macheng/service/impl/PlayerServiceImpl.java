@@ -22,17 +22,20 @@ public class PlayerServiceImpl implements PlayerService {
     protected PlayerDao playerDao;
     @Override
     public Integer addPlayer(Player player) {
-        return null;
+        Integer row = playerDao.addPlayer(player);
+        return row;
     }
 
     @Override
-    public Integer deletePlayer(String playerName) {
-        return null;
+    public Integer deletePlayer(Integer playerId) {
+        Integer row = playerDao.deletePlayer(playerId);
+        return row;
     }
 
     @Override
-    public Integer updatePlayer(String playerName) {
-        return null;
+    public Integer updatePlayer(Player player) {
+        Integer row = playerDao.updatePlayer(player);
+        return row;
     }
 
     @Override

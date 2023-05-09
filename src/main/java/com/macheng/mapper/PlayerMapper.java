@@ -15,18 +15,18 @@ public interface PlayerMapper {
     Integer addPlayer(@Param("player") Player player);
 
     /**
-     * 根据角色名删除角色
-     * @param playerName
+     * 根据角色id删除角色
+     * @param playerId
      * @return
      */
-    Integer DeletePlayer(@Param("playerName") String playerName);
+    Integer DeletePlayer(@Param("playerId") Integer playerId);
 
     /**
-     * 根据角色名修改角色信息
-     * @param playerName
+     * 修改角色信息
+     * @param player
      * @return
      */
-    Integer UpdatePlayer(@Param("playerName") String playerName);
+    Integer UpdatePlayer(@Param("player") Player player);
 
     /**
      * 根据角色名查询角色信息

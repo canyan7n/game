@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.macheng.mapper.PlayerMapper">
     <!--
         mapper接口和映射文件要保证两个一致
@@ -12,4 +12,21 @@
     <select id="getAllPlayer" resultType="Player">
         select * from t_player;
     </select>
+
+    <!--Integer addPlayer(@Param("player") Player player);-->
+    <insert id="addPlayer" parameterType="Player">
+        insert into t_player values(#{player.playerName},#{player.userId},null)
+    </insert>
+
+    <!--Integer DeletePlayer(@Param("playerName") String playerName);-->
+    <delete id="DeletePlayer">
+        delete from t_player where player_id = #{playerId}
+    </delete>
+
+    <!--Integer UpdatePlayer(@Param("playerId") Integer playerId);-->
+    <update id="UpdatePlayer" parameterType="Player">
+        update t_player
+        set player_name = #{player.playerName},user_id = #{player.userId}
+        where player_id = #{player.playerId}
+    </update>
 </mapper>

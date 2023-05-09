@@ -22,7 +22,8 @@ public class WeaponServiceImpl implements WeaponService {
     protected WeaponDao weaponDao;
     @Override
     public Integer addWeapon(Weapon weapon) {
-        return null;
+        Integer row = weaponDao.addWeapon(weapon);
+        return row;
     }
 
     @Override

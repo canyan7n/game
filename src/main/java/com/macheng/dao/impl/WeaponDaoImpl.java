@@ -22,7 +22,8 @@ public class WeaponDaoImpl implements WeaponDao {
     WeaponMapper weaponMapper;
     @Override
     public Integer addWeapon(Weapon weapon) {
-        return null;
+        Integer row = weaponMapper.addWeapon(weapon);
+        return row;
     }
 
     @Override

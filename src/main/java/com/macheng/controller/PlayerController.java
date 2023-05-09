@@ -4,7 +4,7 @@ import com.macheng.pojo.Player;
 import com.macheng.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
@@ -23,20 +23,42 @@ public class PlayerController {
     @Autowired
     PlayerService playerService;
 
-    @RequestMapping("/addPlayer")
+    @RequestMapping (value = "/addPlayerPre",method = RequestMethod.GET)
     public String addPlayer(){
-
-        return null;
+        return "/player/add-Player";
     }
 
-    @RequestMapping("/deletePlayer")
-    public String deletePlayer(){
-        return null;
+    @RequestMapping(value = "/addPlayerPost",method = RequestMethod.POST)
+    public String addPlayer_(Player player){
+        Integer row = playerService.addPlayer(player);
+        if(row > 0){
+            return "redirect:/getPlayers";
+        }
+        return "error";
     }
 
-    @RequestMapping("/updatePlayer")
-    public String updatePlayer(){
-        return null;
+    @RequestMapping("/deletePlayer/{playerId}")
+    public String deletePlayer(@PathVariable Integer playerId){
+        Integer row = playerService.deletePlayer(playerId);
+        if(row > 0){
+            return "redirect:/getPlayers";
+        }
+        return "error";
+    }
+
+    @RequestMapping("/updatePlayerPre/{playerId}")
+    public String updatePlayer(@PathVariable Integer playerId,HttpServletRequest request){
+        request.setAttribute("playerId",playerId);
+        return "/player/update-player";
+    }
+    @RequestMapping("/updatePlayerPost")
+    public String updatePlayer_(Player player){
+        System.out.println(player);
+        Integer row = playerService.updatePlayer(player);
+        if(row > 0){
+            return "redirect:/getPlayers";
+        }
+        return "error";
     }
 
     @RequestMapping("/getPlayer")
@@ -47,8 +69,7 @@ public class PlayerController {
     @RequestMapping("getPlayers")
     public String getPlayers(HttpServletRequest request){
         Collection<Player> allPlayer = playerService.getAllPlayer();
-        System.out.println("========" + allPlayer);
         request.setAttribute("allPlayer",allPlayer);
-        return "/player-list";
+        return "/player/player-list";
     }
 }
