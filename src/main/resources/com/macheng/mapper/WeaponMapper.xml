@@ -22,4 +22,11 @@
     <delete id="deleteWeapon">
         delete from t_weapon where weapon_id = #{weaponId}
     </delete>
+
+    <!--Integer updateWeapon(@Param("weaponId") Integer weaponId);-->
+    <update id="updateWeapon" parameterType="Mu">
+        update t_weapon set weapon_name = #{weapon.weaponName},weapon_damage = #{weapon.weaponDamage} where weapon_id = #{weapon.weaponId}
+    </update>
+
 </mapper>
+

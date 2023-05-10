@@ -31,10 +31,10 @@ public interface WeaponMapper {
     /**
      * 根据武器id修改武器信息
      *
-     * @param weaponId
+     * @param weapon
      * @return
      */
-    Integer updateWeapon(@Param("weaponId") Integer weaponId);
+    Integer updateWeapon(@Param("weapon") Weapon weapon);
 
     /**
      * 根据武器名查询武器信息

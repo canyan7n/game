@@ -33,8 +33,9 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
-    public Integer updateWeapon(Integer weaponId) {
-        return null;
+    public Integer updateWeapon(Weapon weapon) {
+        Integer row = weaponDao.updateWeapon(weapon);
+        return row;
     }
 
     @Override

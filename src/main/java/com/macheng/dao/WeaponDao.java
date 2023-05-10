@@ -23,10 +23,10 @@ public interface WeaponDao {
 
     /**
      * 根据武器id修改武器
-     * @param weaponId
+     * @param weapon
      * @return
      */
-    Integer updateWeapon(Integer weaponId);
+    Integer updateWeapon(Weapon weapon);
 
     /**
      * 根据武器名查询武器

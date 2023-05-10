@@ -3,6 +3,7 @@ package com.macheng.controller;
 import com.macheng.pojo.Mu;
 import com.macheng.pojo.Weapon;
 import com.macheng.service.WeaponService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,14 +49,20 @@ public class WeaponController {
         return "error";
     }
 
-    @RequestMapping("/updateWeaponPre")
-    public String updateWeaponPre(Integer weaponId){
-        return null;
+    @RequestMapping("/updateWeaponPre/{weaponId}")
+    public String updateWeaponPre(@PathVariable Integer weaponId,HttpServletRequest request){
+        request.setAttribute("weaponId",weaponId);
+        return "/weapon/update-weapon";
     }
 
     @RequestMapping("/updateWeaponPost")
-    public String updateWeaponPost(Integer weaponId){
-        return null;
+    public String updateWeaponPost(Mu weapon){
+        System.out.println(weapon);
+        Integer row = weaponService.updateWeapon(weapon);
+        if (row > 0){
+            return "redirect:/getWeapons";
+        }
+        return "error";
     }
 
     @RequestMapping("/getWeapon")
