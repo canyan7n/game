@@ -1,9 +1,11 @@
 package com.macheng.controller;
 
+import com.macheng.pojo.Mu;
 import com.macheng.pojo.Weapon;
 import com.macheng.service.WeaponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,7 +31,7 @@ public class WeaponController {
     }
 
     @RequestMapping(value = "/addWeaponPost",method = RequestMethod.POST)
-    public String addWeaponPost(Weapon weapon){
+    public String addWeaponPost(Mu weapon){
         System.out.println(weapon);
         Integer row = weaponService.addWeapon(weapon);
         if (row > 0){
@@ -37,13 +39,22 @@ public class WeaponController {
         }
         return "error";
     }
-    @RequestMapping("/deleteWeapon")
-    public String deleteWeapon(String weaponName){
+    @RequestMapping("/deleteWeapon/{weaponId}")
+    public String deleteWeapon(@PathVariable Integer weaponId){
+        Integer row = weaponService.deleteWeapon(weaponId);
+        if (row > 0){
+            return "redirect:weapon-list";
+        }
+        return "error";
+    }
+
+    @RequestMapping("/updateWeaponPre")
+    public String updateWeaponPre(Integer weaponId){
         return null;
     }
 
-    @RequestMapping("/updateWeapon")
-    public String updateWeapon(String weaponName){
+    @RequestMapping("/updateWeaponPost")
+    public String updateWeaponPost(Integer weaponId){
         return null;
     }
 

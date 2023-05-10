@@ -19,6 +19,8 @@ public class Mu implements Weapon {
     private Integer weaponDamage;//武器伤害值
 
     private String weaponName; //武器名字
+
+    private Integer weaponId;//武器id
     @Override
     public Integer hurt() {
         return weaponDamage;

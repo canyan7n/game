@@ -18,8 +18,9 @@ import org.springframework.stereotype.Component;
 public class Tie implements Weapon {
     private Integer weaponDamage; //铁剑的伤害值
 
-//    @Value("铁剑")
     private String weaponName; //武器名字
+
+    private Integer weaponId;//武器id
     @Override
     public Integer hurt() {
         return weaponDamage;

@@ -21,20 +21,20 @@ public interface WeaponMapper {
     Integer addWeapon(@Param("weapon") Weapon weapon);
 
     /**
-     * 根据武器名删除武器
+     * 根据武器id删除武器
      *
-     * @param weaponName
+     * @param weaponId
      * @return
      */
-    Integer deleteWeapon(@Param("weaponName") String weaponName);
+    Integer deleteWeapon(@Param("weaponId") Integer weaponId);
 
     /**
-     * 根据武器名修改武器信息
+     * 根据武器id修改武器信息
      *
-     * @param weaponName
+     * @param weaponId
      * @return
      */
-    Integer updateWeapon(@Param("weaponName") String weaponName);
+    Integer updateWeapon(@Param("weaponId") Integer weaponId);
 
     /**
      * 根据武器名查询武器信息

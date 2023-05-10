@@ -20,7 +20,7 @@
             <td th:text="${weapons.weaponDamage}"></td>
             <td>
                 <a th:href="www.baidu.com">修改</a>
-                <a th:href="www.baidu.com">删除</a>
+                <a th:href="@{'/deleteWeapon/'+${weapons.weaponId}}">删除</a>
             </td>
         </tr>
     </table>

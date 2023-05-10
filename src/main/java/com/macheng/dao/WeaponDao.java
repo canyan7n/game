@@ -15,18 +15,18 @@ public interface WeaponDao {
     Integer addWeapon(Weapon weapon);
 
     /**
-     * 根据武器名删除武器
-     * @param weaponName
+     * 根据武器id删除武器
+     * @param weaponId
      * @return
      */
-    Integer deleteWeapon(String weaponName);
+    Integer deleteWeapon(Integer weaponId);
 
     /**
-     * 根据武器名修改武器
-     * @param weaponName
+     * 根据武器id修改武器
+     * @param weaponId
      * @return
      */
-    Integer updateWeapon(String weaponName);
+    Integer updateWeapon(Integer weaponId);
 
     /**
      * 根据武器名查询武器

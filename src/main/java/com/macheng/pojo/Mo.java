@@ -20,6 +20,7 @@ public class Mo implements Weapon {
 
     private String weaponName;//武器名字
 
+    private Integer weaponId;//武器id
     @Override
     public Integer hurt() {
         return weaponDamage;

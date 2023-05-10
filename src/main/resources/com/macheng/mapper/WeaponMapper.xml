@@ -17,4 +17,9 @@
     <insert id="addWeapon" parameterType="Mu">
         insert into t_weapon values(null,#{weapon.weaponName},#{weapon.weaponDamage})
     </insert>
+
+    <!--Integer deleteWeapon(@Param("weaponId") Integer weaponId);-->
+    <delete id="deleteWeapon">
+        delete from t_weapon where weapon_id = #{weaponId}
+    </delete>
 </mapper>
