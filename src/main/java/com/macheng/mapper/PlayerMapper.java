@@ -15,6 +15,13 @@ public interface PlayerMapper {
     Integer addPlayer(@Param("player") Player player);
 
     /**
+     * 添加完角色 同步到userdata
+     * @param player
+     * @return
+     */
+    Integer addPlayerToData(@Param("player") Player player);
+
+    /**
      * 根据角色id删除角色
      * @param playerId
      * @return
@@ -22,11 +29,25 @@ public interface PlayerMapper {
     Integer DeletePlayer(@Param("playerId") Integer playerId);
 
     /**
+     * 根据角色id删除角色同步到userdata
+     * @param playerId
+     * @return
+     */
+    Integer DeletePlayerToData(@Param("playerId") Integer playerId);
+
+    /**
      * 修改角色信息
      * @param player
      * @return
      */
     Integer UpdatePlayer(@Param("player") Player player);
+
+    /**
+     * 修改角色信息同步到userdata
+     * @param player
+     * @return
+     */
+    Integer UpdatePlayerToData(@Param("player") Player player);
 
     /**
      * 根据角色名查询角色信息

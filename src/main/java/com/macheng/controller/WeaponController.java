@@ -33,9 +33,10 @@ public class WeaponController {
 
     @RequestMapping(value = "/addWeaponPost",method = RequestMethod.POST)
     public String addWeaponPost(Mu weapon){
+        Integer row1 = weaponService.addWeapon(weapon);
         System.out.println(weapon);
-        Integer row = weaponService.addWeapon(weapon);
-        if (row > 0){
+        // Integer row2 = weaponService.addWeaponToData(weapon);
+        if (row1 > 0){
             return "redirect:/getWeapons";
         }
         return "error";

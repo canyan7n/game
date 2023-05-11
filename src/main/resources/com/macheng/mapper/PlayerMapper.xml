@@ -8,25 +8,50 @@
         1.mapper接口的全类名和映射文件的namespace的id值保持一致
         2.mapper接口中的方法的方法名要和映射文件的sql的id值保持一致
     -->
+    <resultMap id="playerMap" type="Player">
+        <id property="playerId" column="player_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="playerName" column="player_name"/>
+        <collection property="weapons" ofType="Mu"></collection>
+    </resultMap>
     <!--List<Player> getAllPlayer();-->
-    <select id="getAllPlayer" resultType="Player">
+    <select id="getAllPlayer" resultMap="playerMap">
         select * from t_player;
     </select>
 
     <!--Integer addPlayer(@Param("player") Player player);-->
-    <insert id="addPlayer" parameterType="Player">
-        insert into t_player values(#{player.playerName},#{player.userId},null)
+    <insert id="addPlayer" parameterType="Player" useGeneratedKeys="true" keyProperty="player.playerId">
+        insert into t_player values(#{player.playerName},#{player.userId},null);
+    </insert>
+    <!--Integer addPlayerToData(@Param("player") Player player);-->
+    <insert id="addPlayerToData" parameterType="Player">
+        insert into t_userdata(user_id,player_id)
+            select user_id,player_id
+            from t_player
+            where player_id = #{player.playerId}
     </insert>
 
     <!--Integer DeletePlayer(@Param("playerName") String playerName);-->
-    <delete id="DeletePlayer">
+    <delete id="DeletePlayer" parameterType="Integer">
         delete from t_player where player_id = #{playerId}
     </delete>
 
-    <!--Integer UpdatePlayer(@Param("playerId") Integer playerId);-->
+    <!--Integer DeletePlayerToData(@Param("playerId") Integer playerId);-->
+    <delete id="DeletePlayerToData" parameterType="Integer">
+        delete from t_userdata where player_id = #{playerId}
+    </delete>
+
+    <!--Integer UpdatePlayer(@Param("player") Player player);-->
     <update id="UpdatePlayer" parameterType="Player">
         update t_player
         set player_name = #{player.playerName},user_id = #{player.userId}
+        where player_id = #{player.playerId}
+    </update>
+
+    <!--Integer UpdatePlayerToData(@Param("player") Player player);-->
+    <update id="UpdatePlayerToData" parameterType="Player">
+        update t_userdata
+        set user_id = #{player.userId}
         where player_id = #{player.playerId}
     </update>
 </mapper>

@@ -38,6 +38,7 @@ public class UserAspect {
 //    给玩家退出游戏加后置通知
     @After("pointTwo()")
     public void logOut(){
+        System.out.println(UserSession.getUserSession());
         System.out.println("退出登录");
     }
 }

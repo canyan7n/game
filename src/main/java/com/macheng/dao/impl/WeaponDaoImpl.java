@@ -27,14 +27,32 @@ public class WeaponDaoImpl implements WeaponDao {
     }
 
     @Override
+    public Integer addWeaponToData(Weapon weapon) {
+        Integer row = weaponMapper.addWeaponToData(weapon);
+        return row;
+    }
+
+    @Override
     public Integer deleteWeapon(Integer weaponId) {
         Integer row = weaponMapper.deleteWeapon(weaponId);
         return row;
     }
 
     @Override
+    public Integer deleteWeaponToData(Integer weaponId) {
+        Integer row = weaponMapper.deleteWeaponToData(weaponId);
+        return row;
+    }
+
+    @Override
     public Integer updateWeapon(Weapon weapon) {
         Integer row = weaponMapper.updateWeapon(weapon);
+        return row;
+    }
+
+    @Override
+    public Integer updateWeaponToData(Weapon weapon) {
+        Integer row = weaponMapper.updateWeaponToData(weapon);
         return row;
     }
 

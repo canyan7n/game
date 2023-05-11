@@ -27,14 +27,32 @@ public class PlayerDaoImpl implements PlayerDao {
     }
 
     @Override
+    public Integer addPlayerToData(Player player) {
+        Integer row = playerMapper.addPlayerToData(player);
+        return row;
+    }
+
+    @Override
     public Integer deletePlayer(Integer playerId) {
         Integer row = playerMapper.DeletePlayer(playerId);
         return row;
     }
 
     @Override
+    public Integer deletePlayerToData(Integer playerId) {
+        Integer row = playerMapper.DeletePlayerToData(playerId);
+        return row;
+    }
+
+    @Override
     public Integer updatePlayer(Player player) {
         Integer row = playerMapper.UpdatePlayer(player);
+        return row;
+    }
+
+    @Override
+    public Integer updatePlayerToData(Player player) {
+        Integer row = playerMapper.UpdatePlayerToData(player);
         return row;
     }
 

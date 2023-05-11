@@ -90,6 +90,7 @@ public class UserController {
     @RequestMapping("/getUserPlayers")
     public String getPlayers(HttpServletRequest request){
         List<Player> userPlayers = userService.getUserPlayers(user.getUserId());
+        System.out.println(userPlayers);
         request.setAttribute("userPlayers",userPlayers);
         return "/user/user-players";
     }

@@ -16,6 +16,13 @@ public interface WeaponService {
     Integer addWeapon(Weapon weapon);
 
     /**
+     * 添加武器同步到playerdata
+     * @param weapon
+     * @return
+     */
+    Integer addWeaponToData(Weapon weapon);
+
+    /**
      * 根据武器id删除武器
      * @param weaponId
      * @return
@@ -23,11 +30,25 @@ public interface WeaponService {
     Integer deleteWeapon(Integer weaponId);
 
     /**
+     * 根据武器id删除武器同步到playerdata
+     * @param weaponId
+     * @return
+     */
+    Integer deleteWeaponToData(Integer weaponId);
+
+    /**
      * 根据武器id修改武器
      * @param weapon
      * @return
      */
     Integer updateWeapon(Weapon weapon);
+
+    /**
+     * 根据武器id修改武器同步到playerdata
+     * @param weapon
+     * @return
+     */
+    Integer updateWeaponToData(Weapon weapon);
 
     /**
      * 根据武器名查询武器

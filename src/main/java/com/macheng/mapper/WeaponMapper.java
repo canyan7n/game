@@ -21,6 +21,13 @@ public interface WeaponMapper {
     Integer addWeapon(@Param("weapon") Weapon weapon);
 
     /**
+     * 添加武器同步到playerdata
+     * @param weapon
+     * @return
+     */
+    Integer addWeaponToData(@Param("weapon") Weapon weapon);
+
+    /**
      * 根据武器id删除武器
      *
      * @param weaponId
@@ -29,12 +36,27 @@ public interface WeaponMapper {
     Integer deleteWeapon(@Param("weaponId") Integer weaponId);
 
     /**
+     * 根据武器id删除武器同步到playerdata
+     * @param weaponId
+     * @return
+     */
+    Integer deleteWeaponToData(@Param("weaponId") Integer weaponId);
+
+    /**
      * 根据武器id修改武器信息
      *
      * @param weapon
      * @return
      */
     Integer updateWeapon(@Param("weapon") Weapon weapon);
+
+    /**
+     * 根据武器id修改武器信息同步到playerdata
+     *
+     * @param weapon
+     * @return
+     */
+    Integer updateWeaponToData(@Param("weapon") Weapon weapon);
 
     /**
      * 根据武器名查询武器信息

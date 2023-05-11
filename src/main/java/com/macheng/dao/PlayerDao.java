@@ -1,6 +1,7 @@
 package com.macheng.dao;
 
 import com.macheng.pojo.Player;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,11 +10,17 @@ import java.util.List;
 public interface PlayerDao {
     /**
      * 添加角色
-     *
      * @param player
      * @return
      */
     Integer addPlayer(Player player);
+
+    /**
+     * 添加完角色 同步到userdata
+     * @param player
+     * @return
+     */
+    Integer addPlayerToData(@Param("player") Player player);
 
     /**
      * 根据角色id删除角色
@@ -23,11 +30,25 @@ public interface PlayerDao {
     Integer deletePlayer(Integer playerId);
 
     /**
+     * 根据角色id删除角色同步到userdata
+     * @param playerId
+     * @return
+     */
+    Integer deletePlayerToData(Integer playerId);
+
+    /**
      * 修改角色
      * @param player
      * @return
      */
     Integer updatePlayer(Player player);
+
+    /**
+     * 修改角色同步到userdata
+     * @param player
+     * @return
+     */
+    Integer updatePlayerToData(Player player);
 
     /**
      * 根据角色名查询角色

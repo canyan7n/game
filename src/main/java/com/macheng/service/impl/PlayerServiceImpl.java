@@ -27,14 +27,32 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
+    public Integer addPlayerToData(Player player) {
+        Integer row = playerDao.addPlayerToData(player);
+        return row;
+    }
+
+    @Override
     public Integer deletePlayer(Integer playerId) {
         Integer row = playerDao.deletePlayer(playerId);
         return row;
     }
 
     @Override
+    public Integer deletePlayerToData(Integer playerId) {
+        Integer row = playerDao.deletePlayerToData(playerId);
+        return row;
+    }
+
+    @Override
     public Integer updatePlayer(Player player) {
         Integer row = playerDao.updatePlayer(player);
+        return row;
+    }
+
+    @Override
+    public Integer updatePlayerToData(Player player) {
+        Integer row = playerDao.updatePlayerToData(player);
         return row;
     }
 

@@ -2,6 +2,7 @@ package com.macheng.controller;
 
 import com.macheng.pojo.Player;
 import com.macheng.service.PlayerService;
+import com.macheng.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,9 @@ public class PlayerController {
     @Autowired
     PlayerService playerService;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping (value = "/addPlayerPre",method = RequestMethod.GET)
     public String addPlayer(){
         return "/player/add-Player";
@@ -30,8 +34,10 @@ public class PlayerController {
 
     @RequestMapping(value = "/addPlayerPost",method = RequestMethod.POST)
     public String addPlayer_(Player player){
-        Integer row = playerService.addPlayer(player);
-        if(row > 0){
+        Integer row1 = playerService.addPlayer(player);
+        Integer row2 = playerService.addPlayerToData(player);
+        // userService.
+        if(row1 > 0 && row2 > 0){
             return "redirect:/getPlayers";
         }
         return "error";
@@ -39,8 +45,9 @@ public class PlayerController {
 
     @RequestMapping("/deletePlayer/{playerId}")
     public String deletePlayer(@PathVariable Integer playerId){
-        Integer row = playerService.deletePlayer(playerId);
-        if(row > 0){
+        Integer row1 = playerService.deletePlayer(playerId);
+        Integer row2 = playerService.deletePlayerToData(playerId);
+        if(row1 > 0 && row2 > 0){
             return "redirect:/getPlayers";
         }
         return "error";
@@ -54,8 +61,9 @@ public class PlayerController {
     @RequestMapping("/updatePlayerPost")
     public String updatePlayer_(Player player){
         System.out.println(player);
-        Integer row = playerService.updatePlayer(player);
-        if(row > 0){
+        Integer row1 = playerService.updatePlayer(player);
+        Integer row2 = playerService.updatePlayerToData(player);
+        if(row1 > 0 && row2 > 0){
             return "redirect:/getPlayers";
         }
         return "error";
@@ -69,6 +77,7 @@ public class PlayerController {
     @RequestMapping("getPlayers")
     public String getPlayers(HttpServletRequest request){
         Collection<Player> allPlayer = playerService.getAllPlayer();
+        System.out.println(allPlayer);
         request.setAttribute("allPlayer",allPlayer);
         return "/player/player-list";
     }

@@ -16,7 +16,7 @@ import java.util.List;
 public class Player {
     private String playerName; //角色名字
 
-    private List<Weapon> weapons;  //角色的装备
+    private Weapon weapons;  //角色的装备
 
     private Integer playerId;//角色id,自增主键
 

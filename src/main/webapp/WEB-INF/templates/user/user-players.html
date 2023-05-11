@@ -6,19 +6,19 @@
 </head>
 <body>
 <div id="user_player">
-    <table>
-        <tr>
-            <th colspan="2">user_player_list</th>
-        </tr>
+    <h1>我的角色列表</h1>
+    <table border="1px">
         <tr>
             <th>角色</th>
-            <th>(<a th:href="www.baidu.com">添加</a>)</th>
+<!--            <th>(<a th:href="www.baidu.com">添加</a>)</th>-->
+            <th>装备</th>
         </tr>
         <tr th:each="players:${userPlayers}">
             <td th:text="${players.playerName}"></td>
-            <td>
-                <a th:href="www.baidu.com">修改</a>
-                <a th:href="www.baidu.com">删除</a>
+            <td th:each="weapons:${userPlayers.weapons}">
+                <!--<a th:href="www.baidu.com">查看</a>-->
+                <!--<a th:href="www.baidu.com">修改</a>-->
+                <!--<a th:href="www.baidu.com">删除</a>-->
             </td>
         </tr>
     </table>

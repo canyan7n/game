@@ -14,19 +14,31 @@
     </select>
 
     <!--Integer addWeapon(@Param("weapon") Weapon weapon);-->
-    <insert id="addWeapon" parameterType="Mu">
+    <insert id="addWeapon" parameterType="Mu" useGeneratedKeys="true" keyProperty="weapon.weaponId">
         insert into t_weapon values(null,#{weapon.weaponName},#{weapon.weaponDamage})
     </insert>
+
+    <!--Integer addWeaponToData(@Param("weapon") Weapon weapon);-->
+    <!--<insert id="addWeaponToData" parameterType="Mu">-->
+    <!--    insert into t_playerdata(player_id,weapon_id)-->
+    <!--        select player_id,weapon_id-->
+    <!--        from t_wea-->
+    <!--</insert>-->
 
     <!--Integer deleteWeapon(@Param("weaponId") Integer weaponId);-->
     <delete id="deleteWeapon">
         delete from t_weapon where weapon_id = #{weaponId}
     </delete>
 
+    <!--Integer deleteWeaponToData(@Param("weaponId") Integer weaponId);-->
+
+
     <!--Integer updateWeapon(@Param("weaponId") Integer weaponId);-->
     <update id="updateWeapon" parameterType="Mu">
         update t_weapon set weapon_name = #{weapon.weaponName},weapon_damage = #{weapon.weaponDamage} where weapon_id = #{weapon.weaponId}
     </update>
+
+    <!--Integer updateWeaponToData(@Param("weapon") Weapon weapon);-->
 
 </mapper>
 

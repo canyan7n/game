@@ -27,14 +27,32 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
+    public Integer addWeaponToData(Weapon weapon) {
+        Integer row = weaponDao.addWeaponToData(weapon);
+        return row;
+    }
+
+    @Override
     public Integer deleteWeapon(Integer weaponId) {
         Integer row = weaponDao.deleteWeapon(weaponId);
         return row;
     }
 
     @Override
+    public Integer deleteWeaponToData(Integer weaponId) {
+        Integer row = weaponDao.deleteWeaponToData(weaponId);
+        return row;
+    }
+
+    @Override
     public Integer updateWeapon(Weapon weapon) {
         Integer row = weaponDao.updateWeapon(weapon);
+        return row;
+    }
+
+    @Override
+    public Integer updateWeaponToData(Weapon weapon) {
+        Integer row = weaponDao.updateWeaponToData(weapon);
         return row;
     }
 
