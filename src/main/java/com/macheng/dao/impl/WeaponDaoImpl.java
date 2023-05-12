@@ -17,7 +17,6 @@ import java.util.List;
  */
 @Repository
 public class WeaponDaoImpl implements WeaponDao {
-
     @Autowired
     WeaponMapper weaponMapper;
     @Override
@@ -25,42 +24,35 @@ public class WeaponDaoImpl implements WeaponDao {
         Integer row = weaponMapper.addWeapon(weapon);
         return row;
     }
-
     @Override
     public Integer addWeaponToData(Weapon weapon) {
         Integer row = weaponMapper.addWeaponToData(weapon);
         return row;
     }
-
     @Override
     public Integer deleteWeapon(Integer weaponId) {
         Integer row = weaponMapper.deleteWeapon(weaponId);
         return row;
     }
-
     @Override
     public Integer deleteWeaponToData(Integer weaponId) {
         Integer row = weaponMapper.deleteWeaponToData(weaponId);
         return row;
     }
-
     @Override
     public Integer updateWeapon(Weapon weapon) {
         Integer row = weaponMapper.updateWeapon(weapon);
         return row;
     }
-
     @Override
     public Integer updateWeaponToData(Weapon weapon) {
         Integer row = weaponMapper.updateWeaponToData(weapon);
         return row;
     }
-
     @Override
     public Weapon getWeaponByName(String weaponName) {
         return null;
     }
-
     @Override
     public List<Weapon> getWeapons() {
         List<Weapon> allWeapon = weaponMapper.getAllWeapon();

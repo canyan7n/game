@@ -16,7 +16,8 @@ islogin TINYINT(1) not null DEFAULT 0
 create table t_player(
 player_name varchar(32) not null DEFAULT '',
 user_id int not null DEFAULT 0,
-player_id int not null primary key auto_increment
+player_id int not null primary key auto_increment,
+weapon_id int references t_weapon(weapon_id)
 );
 
 #创建武器表
@@ -28,12 +29,12 @@ weapon_damage int not null DEFAULT 0
 
 #创建角色和装备的联系表
 create table t_playerdata(
-player_id int not null DEFAULT 0,
-weapon_id int not null DEFAULT 0
+player_id int references t_player(player_id),
+weapon_id int references t_weapon(weapon_id)
 );
 
 #创建用户和角色的联系表
 create table t_userdata(
-user_id int not null DEFAULT 0,
-player_id int not null DEFAULT 0
+user_id int references t_user(user_id),
+player_id int references t_player(player_id)
 );
