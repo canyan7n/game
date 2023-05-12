@@ -20,18 +20,14 @@ import java.util.List;
  */
 @Controller
 public class PlayerController {
-
     @Autowired
     PlayerService playerService;
-
     @Autowired
     UserService userService;
-
     @RequestMapping (value = "/addPlayerPre",method = RequestMethod.GET)
     public String addPlayer(){
         return "/player/add-Player";
     }
-
     @RequestMapping(value = "/addPlayerPost",method = RequestMethod.POST)
     public String addPlayer_(Player player){
         Integer row1 = playerService.addPlayer(player);
@@ -42,7 +38,6 @@ public class PlayerController {
         }
         return "error";
     }
-
     @RequestMapping("/deletePlayer/{playerId}")
     public String deletePlayer(@PathVariable Integer playerId){
         Integer row1 = playerService.deletePlayer(playerId);
@@ -52,7 +47,6 @@ public class PlayerController {
         }
         return "error";
     }
-
     @RequestMapping("/updatePlayerPre/{playerId}")
     public String updatePlayer(@PathVariable Integer playerId,HttpServletRequest request){
         request.setAttribute("playerId",playerId);

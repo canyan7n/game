@@ -4,6 +4,7 @@ import com.macheng.dao.UserDao;
 import com.macheng.pojo.Player;
 import com.macheng.pojo.User;
 import com.macheng.service.UserService;
+import com.macheng.utils.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,6 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     protected UserDao userDao;
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
     /**
      * 注册
      * @param user
@@ -30,6 +29,8 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Integer register(User user) {
+        String lastLogin = TimeUtil.getCurrentTime();//获取当前时间
+        user.setLastLogin(lastLogin);//设置用户的登录时间，默认未当前时间
         Integer row = userDao.register(user);
         return row;
     }

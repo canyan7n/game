@@ -3,16 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.macheng.mapper.PlayerMapper">
-    <!--
-        mapper接口和映射文件要保证两个一致
-        1.mapper接口的全类名和映射文件的namespace的id值保持一致
-        2.mapper接口中的方法的方法名要和映射文件的sql的id值保持一致
-    -->
     <resultMap id="playerMap" type="Player">
         <id property="playerId" column="player_id"/>
         <result property="userId" column="user_id"/>
         <result property="playerName" column="player_name"/>
-        <association property="weapons" javaType="Mu" column="weapon_id" select="com.macheng.mapper.WeaponMapper.getWeaponById" />
+        <association property="weapons" javaType="Mu"
+                     column="weapon_id"
+                     select="com.macheng.mapper.WeaponMapper.getWeaponById" />
     </resultMap>
     <!--List<Player> getAllPlayer();-->
     <select id="getAllPlayer" resultMap="playerMap">
@@ -25,8 +22,10 @@
     </select>
 
     <!--Integer addPlayer(@Param("player") Player player);-->
-    <insert id="addPlayer" parameterType="Player" useGeneratedKeys="true" keyProperty="player.playerId">
-        insert into t_player values(null,#{player.playerName},#{player.weaponId},#{player.userId});
+    <insert id="addPlayer" parameterType="Player"
+            useGeneratedKeys="true" keyProperty="player.playerId">
+        insert into t_player
+        values(null,#{player.playerName},#{player.weaponId},#{player.userId});
     </insert>
     <!--Integer addPlayerToData(@Param("player") Player player);-->
     <insert id="addPlayerToData" parameterType="Player">
@@ -49,7 +48,8 @@
     <!--Integer UpdatePlayer(@Param("player") Player player);-->
     <update id="UpdatePlayer" parameterType="Player">
         update t_player
-        set player_name = #{player.playerName},user_id = #{player.userId},weapon_id = #{player.weaponId}
+        set player_name = #{player.playerName},
+            user_id = #{player.userId},weapon_id = #{player.weaponId}
         where player_id = #{player.playerId}
     </update>
 

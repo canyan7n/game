@@ -3,48 +3,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.macheng.mapper.WeaponMapper">
-    <!--
-        mapper接口和映射文件要保证两个一致
-        1.mapper接口的全类名和映射文件的namespace的id值保持一致
-        2.mapper接口中的方法的方法名要和映射文件的sql的id值保持一致
-    -->
-
     <!--Weapon getWeaponById(@Param("weaponId") Integer weaponId);-->
     <select id="getWeaponById" parameterType="Integer" resultType="Mu">
         select * from t_weapon where weapon_id = #{weaponId}
     </select>
-
     <!--List<Weapon> getAllWeapon();-->
     <select id="getAllWeapon" resultType="Mu">
         select * from t_weapon;
     </select>
-
     <!--Integer addWeapon(@Param("weapon") Weapon weapon);-->
-    <insert id="addWeapon" parameterType="Mu" useGeneratedKeys="true" keyProperty="weapon.weaponId">
-        insert into t_weapon values(null,#{weapon.weaponName},#{weapon.weaponDamage})
+    <insert id="addWeapon" parameterType="Mu"
+            useGeneratedKeys="true" keyProperty="weapon.weaponId">
+        insert into t_weapon
+        values(null,#{weapon.weaponName},#{weapon.weaponDamage})
     </insert>
-
-    <!--Integer addWeaponToData(@Param("weapon") Weapon weapon);-->
-    <!--<insert id="addWeaponToData" parameterType="Mu">-->
-    <!--    insert into t_playerdata(player_id,weapon_id)-->
-    <!--        select player_id,weapon_id-->
-    <!--        from t_wea-->
-    <!--</insert>-->
-
     <!--Integer deleteWeapon(@Param("weaponId") Integer weaponId);-->
     <delete id="deleteWeapon">
         delete from t_weapon where weapon_id = #{weaponId}
     </delete>
 
-    <!--Integer deleteWeaponToData(@Param("weaponId") Integer weaponId);-->
-
-
     <!--Integer updateWeapon(@Param("weaponId") Integer weaponId);-->
     <update id="updateWeapon" parameterType="Mu">
-        update t_weapon set weapon_name = #{weapon.weaponName},weapon_damage = #{weapon.weaponDamage} where weapon_id = #{weapon.weaponId}
+        update t_weapon
+        set weapon_name = #{weapon.weaponName},
+            weapon_damage = #{weapon.weaponDamage}
+        where weapon_id = #{weapon.weaponId}
     </update>
-
-    <!--Integer updateWeaponToData(@Param("weapon") Weapon weapon);-->
-
 </mapper>
 

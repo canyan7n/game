@@ -26,13 +26,11 @@ public class UserController {
     private User user;
     @Autowired
     private UserService userService;
-
     //注册
     @RequestMapping("/register")
     public String register(){
         return "/user/register";
     }
-
     //注册页面
     @RequestMapping("/userregister")
     public String userRegister(User user){
@@ -42,7 +40,6 @@ public class UserController {
         }
         return "error";
     }
-
     // 登录
     @RequestMapping("/login")
     public String login(HttpServletRequest request, HttpSession session, Model model) {
@@ -64,7 +61,6 @@ public class UserController {
         }
         return "error";
     }
-
     // 玩游戏
     @RequestMapping("/toplay")
     public String play(Model model){
@@ -76,16 +72,13 @@ public class UserController {
         userService.play(user);
         return "/user/play";
     }
-
     //登出
     @RequestMapping("/logout")
     public String logout(){
-        //用户登出，修改相应状态
-        userService.logout(user.getUserId());
+        userService.logout(user.getUserId());//用户登出，修改相应状态
         user.setIslogin(false);
         return "/user/logout";
     }
-
     // 查看当前用户的游戏角色
     @RequestMapping("/getUserPlayers")
     public String getPlayers(HttpServletRequest request){

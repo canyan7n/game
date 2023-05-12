@@ -11,11 +11,14 @@
 
     <!--public Integer register(@Param("user") User user);-->
     <insert id="register">
-        insert into t_user values(#{user.userId},#{user.username},#{user.password},#{user.accountType},#{user.lastLogin},0)
+        insert into t_user
+        values(#{user.userId},#{user.username},#{user.password},
+               #{user.accountType},#{user.lastLogin},0)
     </insert>
 
     <resultMap id="userResultMap" type="User">
-        <collection property="players" ofType="User" column="user_id" select="com.macheng.mapper.PlayerMapper.getPlayerByUId"/>
+        <collection property="players" ofType="User"
+                    column="user_id" select="com.macheng.mapper.PlayerMapper.getPlayerByUId"/>
     </resultMap>
     <!--    public User getUserByUP();-->
     <select id="getUserByUP" resultType="User">
@@ -37,7 +40,8 @@
         <result property="userId" column="user_id"/>
         <result property="playerName" column="player_name"/>
         <result property="weaponId" column="weapon_id"/>
-        <association property="weapons" javaType="Mu" column="weapon_id" select="com.macheng.mapper.WeaponMapper.getWeaponById" />
+        <association property="weapons" javaType="Mu"
+                     column="weapon_id" select="com.macheng.mapper.WeaponMapper.getWeaponById" />
     </resultMap>
     <!--List<Player> getUserPlayers(@Param("userId") Integer userId);-->
     <select id="getUserPlayers" resultType="Player" resultMap="playerResultMap">
