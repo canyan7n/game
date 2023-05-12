@@ -8,6 +8,12 @@
         1.mapper接口的全类名和映射文件的namespace的id值保持一致
         2.mapper接口中的方法的方法名要和映射文件的sql的id值保持一致
     -->
+
+    <!--Weapon getWeaponById(@Param("weaponId") Integer weaponId);-->
+    <select id="getWeaponById" parameterType="Integer" resultType="Mu">
+        select * from t_weapon where weapon_id = #{weaponId}
+    </select>
+
     <!--List<Weapon> getAllWeapon();-->
     <select id="getAllWeapon" resultType="Mu">
         select * from t_weapon;

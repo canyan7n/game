@@ -26,15 +26,17 @@ public class User {
     private Boolean islogin; //当前登录状态
 
     private List<Player> players; //游戏角色列表
+
     @Override
     public String toString() {
         return "User{" +
-                "uId=" + userId +
+                "userId=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", accountType='" + accountType + '\'' +
                 ", lastLogin='" + lastLogin + '\'' +
                 ", islogin=" + islogin +
+                ", players=" + players +
                 '}';
     }
 

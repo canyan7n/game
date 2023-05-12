@@ -50,6 +50,13 @@ public interface PlayerMapper {
     Integer UpdatePlayerToData(@Param("player") Player player);
 
     /**
+     * 根据用户id查询用户的角色
+     * @param userId
+     * @return
+     */
+    Player getPlayerByUId(@Param("userId") Integer userId);
+
+    /**
      * 根据角色名查询角色信息
      * @param playerName
      * @return

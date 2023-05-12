@@ -12,16 +12,21 @@
         <id property="playerId" column="player_id"/>
         <result property="userId" column="user_id"/>
         <result property="playerName" column="player_name"/>
-        <collection property="weapons" ofType="Mu"></collection>
+        <association property="weapons" javaType="Mu" column="weapon_id" select="com.macheng.mapper.WeaponMapper.getWeaponById" />
     </resultMap>
     <!--List<Player> getAllPlayer();-->
     <select id="getAllPlayer" resultMap="playerMap">
         select * from t_player;
     </select>
 
+    <!--Player getPlayerByUId(@Param("userId") Integer userId);-->
+    <select id="getPlayerByUId" resultType="Player">
+        select * from t_player where user_id = #{userId}
+    </select>
+
     <!--Integer addPlayer(@Param("player") Player player);-->
     <insert id="addPlayer" parameterType="Player" useGeneratedKeys="true" keyProperty="player.playerId">
-        insert into t_player values(#{player.playerName},#{player.userId},null);
+        insert into t_player values(null,#{player.playerName},#{player.weaponId},#{player.userId});
     </insert>
     <!--Integer addPlayerToData(@Param("player") Player player);-->
     <insert id="addPlayerToData" parameterType="Player">
@@ -44,7 +49,7 @@
     <!--Integer UpdatePlayer(@Param("player") Player player);-->
     <update id="UpdatePlayer" parameterType="Player">
         update t_player
-        set player_name = #{player.playerName},user_id = #{player.userId}
+        set player_name = #{player.playerName},user_id = #{player.userId},weapon_id = #{player.weaponId}
         where player_id = #{player.playerId}
     </update>
 

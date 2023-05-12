@@ -14,6 +14,9 @@
         insert into t_user values(#{user.userId},#{user.username},#{user.password},#{user.accountType},#{user.lastLogin},0)
     </insert>
 
+    <resultMap id="userResultMap" type="User">
+        <collection property="players" ofType="User" column="user_id" select="com.macheng.mapper.PlayerMapper.getPlayerByUId"/>
+    </resultMap>
     <!--    public User getUserByUP();-->
     <select id="getUserByUP" resultType="User">
         select * from t_user where username = #{username} and password = #{password}
@@ -29,13 +32,16 @@
         update  t_user set islogin = 0 and last_login = #{lastLogin} where user_id = #{userId}
     </update>
 
-    <!--<resultMap id="" type="Player">-->
-    <!--    <id property="" />-->
-    <!--    <result-->
-    <!--</resultMap>-->
+    <resultMap id="playerResultMap" type="Player">
+        <id property="playerId" column="player_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="playerName" column="player_name"/>
+        <result property="weaponId" column="weapon_id"/>
+        <association property="weapons" javaType="Mu" column="weapon_id" select="com.macheng.mapper.WeaponMapper.getWeaponById" />
+    </resultMap>
     <!--List<Player> getUserPlayers(@Param("userId") Integer userId);-->
-    <select id="getUserPlayers" resultType="Player">
-        select distinct player_name,t_player.player_id,t_player.user_id
+    <select id="getUserPlayers" resultType="Player" resultMap="playerResultMap">
+        select distinct player_name,t_player.player_id,t_player.user_id,t_player.weapon_id
         from t_player,t_userdata
         where t_player.user_id = #{userId} and t_userdata.user_id = #{userId}
     </select>

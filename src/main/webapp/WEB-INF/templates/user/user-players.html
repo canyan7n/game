@@ -6,8 +6,10 @@
 </head>
 <body>
 <div id="user_player">
-    <h1>我的角色列表</h1>
-    <table border="1px">
+    <table>
+        <tr>
+            <th colspan="2">我的角色列表</th>
+        </tr>
         <tr>
             <th>角色</th>
 <!--            <th>(<a th:href="www.baidu.com">添加</a>)</th>-->
@@ -15,7 +17,7 @@
         </tr>
         <tr th:each="players:${userPlayers}">
             <td th:text="${players.playerName}"></td>
-            <td th:each="weapons:${userPlayers.weapons}">
+            <td th:text="${players.weapons.weaponName}">
                 <!--<a th:href="www.baidu.com">查看</a>-->
                 <!--<a th:href="www.baidu.com">修改</a>-->
                 <!--<a th:href="www.baidu.com">删除</a>-->

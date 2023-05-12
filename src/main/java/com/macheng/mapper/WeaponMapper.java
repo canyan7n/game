@@ -59,6 +59,12 @@ public interface WeaponMapper {
     Integer updateWeaponToData(@Param("weapon") Weapon weapon);
 
     /**
+     * 根据武器id查询武器
+     * @param weaponId
+     * @return
+     */
+    Weapon getWeaponById(@Param("weaponId") Integer weaponId);
+    /**
      * 根据武器名查询武器信息
      *
      * @param weaponName
